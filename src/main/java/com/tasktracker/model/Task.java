@@ -1,4 +1,6 @@
-package com.tasktracker;
+package com.tasktracker.model;
+
+import java.util.Objects;
 
 public class Task {
 
@@ -54,5 +56,29 @@ public class Task {
 
     public void setUpdateAt(String updateAt) {
         this.updateAt = updateAt;
+    }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", description='" + description + '\'' +
+                ", status='" + status + '\'' +
+                ", createdAt='" + createdAt + '\'' +
+                ", updateAt='" + updateAt + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Task task = (Task) o;
+        return id == task.id && Objects.equals(description, task.description) && Objects.equals(status, task.status) && Objects.equals(createdAt, task.createdAt) && Objects.equals(updateAt, task.updateAt);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, description, status, createdAt, updateAt);
     }
 }
