@@ -1,8 +1,8 @@
 package com.tasktracker.service;
 
-import com.tasktracker.exception.NoTaskFoundException;
 import com.tasktracker.model.Task;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -42,4 +42,12 @@ public class InputManagerImpl implements InputManager{
         taskService.updateTask(id, description);
 
     }
+
+    @Override
+    public void save() throws IOException {
+        System.out.println("Type name for file to save Tasks.");
+        String name = in.nextLine().trim().toLowerCase();
+        taskService.saveTask(name);
+    }
+
 }

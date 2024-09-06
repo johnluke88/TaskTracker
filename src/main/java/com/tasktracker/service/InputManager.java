@@ -2,6 +2,7 @@ package com.tasktracker.service;
 
 import com.tasktracker.model.Task;
 
+import java.io.IOException;
 import java.util.List;
 
 public interface InputManager {
@@ -10,5 +11,7 @@ public interface InputManager {
     List<Task> list();
 
     void update();
+
+    void save() throws IOException;
 
 }
