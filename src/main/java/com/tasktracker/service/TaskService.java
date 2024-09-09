@@ -15,4 +15,6 @@ public interface TaskService {
     void updateTask(String id, String description);
 
     void saveTask(String name) throws IOException;
+
+    void uploadTask(String name) throws IOException;
 }

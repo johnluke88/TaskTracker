@@ -43,6 +43,12 @@ public class InputManagerImpl implements InputManager{
 
     }
 
+    public void upload() throws IOException {
+        System.out.println("Type name for file to load Tasks.");
+        String name = in.nextLine().trim().toLowerCase();
+        taskService.uploadTask(name);
+    }
+
     @Override
     public void save() throws IOException {
         System.out.println("Type name for file to save Tasks.");

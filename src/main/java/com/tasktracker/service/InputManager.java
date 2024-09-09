@@ -14,4 +14,6 @@ public interface InputManager {
 
     void save() throws IOException;
 
+    void upload() throws IOException;
+
 }

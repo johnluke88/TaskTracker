@@ -16,12 +16,12 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
         Scanner in = new Scanner(System.in);
 
         TaskRepo taskRepo = new TaskRepoImpl();
-        TaskService taskService = new TaskServiceImpl(new ArrayList<Task>(), taskRepo);
+        TaskService taskService = new TaskServiceImpl(new ArrayList<>(), taskRepo);
         InputManager inputManager = new InputManagerImpl(in, taskService);
 
         String cmd;
@@ -31,6 +31,7 @@ public class Main {
                 case "add": add(inputManager); break;
                 case "update": update(inputManager); break;
                 case "list": list(inputManager); break;
+                case "upload": upload(inputManager); break;
                 default: System.out.println("Type a valid command!");
             }
         }
@@ -59,9 +60,20 @@ public class Main {
         }
     }
 
+    private static void upload(InputManager inputManager) {
+        try {
+            inputManager.upload();
+            System.out.println("File uploaded");
+        } catch (IOException e) {
+            System.out.println("Impossible to load file");
+            throw new RuntimeException(e);
+        }
+    }
+
     private static void exitAndSave(InputManager inputManager) {
         try {
             inputManager.save();
+            System.out.println("File saved");
         } catch (IOException e) {
             System.out.println("Impossible to save file");
             throw new RuntimeException(e);

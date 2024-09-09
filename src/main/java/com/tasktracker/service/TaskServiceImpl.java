@@ -52,6 +52,13 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
+    public void uploadTask(String name) throws IOException {
+        ArrayList<Task> newListOfTasks = taskRepo.uploadFromJson(name+".json");
+        listOfTasks.clear();
+        listOfTasks = newListOfTasks;
+    }
+
+    @Override
     public void saveTask(String name) throws IOException {
         taskRepo.saveToJson(name+".json", listOfTasks);
     }
